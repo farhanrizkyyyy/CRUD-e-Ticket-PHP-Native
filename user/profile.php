@@ -103,6 +103,8 @@
       include '../config.php';
 
       if (isset($_POST['submit-edit'])) {
+        $username = $_SESSION['username'];
+
         $password = md5($_POST['password']);
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];

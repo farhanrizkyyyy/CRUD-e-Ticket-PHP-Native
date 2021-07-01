@@ -31,16 +31,30 @@
 
   <div class="container">
     <?php
+    include '../config.php';
+
     session_start();
 
     if (!isset($_SESSION['username'])) {
       header("location: ../index.php");
     }
+
+    $username = $_SESSION['username'];
+
+    $getName = mysqli_query(
+      $connect,
+      "SELECT first_name, last_name FROM users WHERE username = '$username'"
+    );
+
+    while ($getFullName = mysqli_fetch_array($getName)) {
+      $first_name = $getFullName['first_name'];
+      $last_name = $getFullName['last_name'];
+    }
     ?>
 
     <br>
     <div class="alert alert-primary" role="alert">
-      <h5>Hello, <?php echo $_SESSION['username']; ?>!</h5>
+      <h5>Hello, <?php echo $first_name; ?> <?php echo $last_name; ?>!</h5>
     </div>
 
     <nav aria-label="breadcrumb">
