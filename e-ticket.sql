@@ -34,6 +34,15 @@ CREATE TABLE `airports` (
   `ticket_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `airports`
+--
+
+INSERT INTO `airports` (`airports_code`, `airports_name`, `flight_time`, `ticket_price`) VALUES
+('A1', 'Airport 1', '08:00:00', 500000),
+('A2', 'Airport 2', '15:00:00', 350000),
+('A3', 'Airport 3', '10:00:00', 500000);
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +54,16 @@ CREATE TABLE `login` (
   `password` varchar(50) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`username`, `password`, `role_id`) VALUES
+('admin1', 'e00cf25ad42683b3df678c61f42c6bda', 0),
+('farhanrizky', '155a564b06efe98e382b0d921e43dacd', 1),
+('admin2', 'c84258e9c39059a89ab77d846ddab909', 0),
+('farhan', 'd41d8cd98f00b204e9800998ecf8427e', 1);
 
 -- --------------------------------------------------------
 
@@ -63,6 +82,16 @@ CREATE TABLE `orders` (
   `total_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `username`, `departure`, `destination`, `order_date`, `flight_time`, `qty`, `total_price`) VALUES
+(9, 'farhanrizky', 'A2', 'A3', '2021-06-28', '15:00:00', 2, 700000),
+(10, 'farhanrizky', 'A3', 'A2', '2021-06-28', '10:00:00', 1, 500000),
+(11, 'farhan', 'A2', 'A3', '2021-06-28', '15:00:00', 2, 700000),
+(12, 'farhanrizky', 'A1', 'A3', '2021-06-28', '08:00:00', 3, 1500000);
+
 -- --------------------------------------------------------
 
 --
@@ -73,6 +102,14 @@ CREATE TABLE `roles` (
   `role_id` int(11) NOT NULL,
   `role_name` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`role_id`, `role_name`) VALUES
+(0, 'Admin'),
+(1, 'User');
 
 -- --------------------------------------------------------
 
@@ -87,6 +124,16 @@ CREATE TABLE `users` (
   `phone` varchar(15) NOT NULL,
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`username`, `first_name`, `last_name`, `phone`, `address`) VALUES
+('admin1', '', '', '', ''),
+('admin2', '', '', '', ''),
+('farhan', 'Farhan', 'Fauzi', '123321321123', 'Banjaran, Bandung'),
+('farhanrizky', 'Farhan', 'Rizky', '083824289159', 'Banjaran, Bandung, Jawa Barat, 40377');
 
 --
 -- Indexes for dumped tables
